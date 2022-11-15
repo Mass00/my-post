@@ -1,9 +1,9 @@
 import React, {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import st from './PostsList.module.css'
 import {Post} from "./Post";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {storeType} from "../../Store/ReduxStore";
-import {PostsReducerType} from "../../Store/Reducers/PostsReducer";
+import {delPostAC, PostsReducerType} from "../../Store/Reducers/PostsReducer";
 type PostsListType = {
     visible: boolean
     setVisible: Dispatch<SetStateAction<boolean>>
@@ -22,6 +22,7 @@ export const PostsList = ({visible, setVisible}: PostsListType) => {
             default: return posts
         }
     },[select,posts])
+
     return (
         <div className={st.container}>
             <div className={st.settings}>

@@ -1,5 +1,7 @@
 import React, {memo} from 'react';
 import st from './Post.module.css'
+import {useDispatch} from "react-redux";
+import {delPostAC} from "../../Store/Reducers/PostsReducer";
 
 type PostPropsTypes = {
     id: string
@@ -8,6 +10,8 @@ type PostPropsTypes = {
 }
 export const Post = memo(({id, title, text}: PostPropsTypes) => {
     console.log('Post rerender')
+    const dispatch = useDispatch()
+    const onClickDelPostHandler = () => dispatch(delPostAC(id))
     return (
         <div className={st.container}>
             <div>
@@ -20,6 +24,7 @@ export const Post = memo(({id, title, text}: PostPropsTypes) => {
                    {text}
                 </span>
             </div>
+            <button onClick={onClickDelPostHandler}>Del</button>
         </div>
     );
 })
