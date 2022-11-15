@@ -7,6 +7,7 @@ import {AddPost} from "./components/Post/AddPost";
 
 function App() {
     const [visible,setVisible] = useState<boolean>(false)
+
   return (
     <div className="App">
         <MyModalWindow
