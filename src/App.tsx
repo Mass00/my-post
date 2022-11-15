@@ -1,24 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {PostsList} from "./components/Post/PostsList";
+import {MyModalWindow} from "./UI/MyModalWindow";
+import {AddPost} from "./components/Post/AddPost";
 
 function App() {
+    const [visible,setVisible] = useState<boolean>(false)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <MyModalWindow
+            visible={visible}
+            setVisible={setVisible}
         >
-          Learn React
-        </a>
-      </header>
+                <AddPost/>
+        </MyModalWindow>
+      <PostsList
+          visible={visible}
+          setVisible={setVisible}
+      />
     </div>
   );
 }
